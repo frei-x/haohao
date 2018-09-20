@@ -1,0 +1,9 @@
+/*全局安装*/
+npm i express -g
+npm i mysql -g
+/*mysql对nodejs python等提提供的中间件:*/
+cnpm install @mysql/xdevapi
+/*服务端使用pm2管理nodejs进程,常用命令:
+pm2 start name.js
+pm2 delete all  //杀死所有进程
+pm2 list  //进程列表
