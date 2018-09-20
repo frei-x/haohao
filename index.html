@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>٩(๑❛ᴗ❛๑)۶</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+		<link rel="stylesheet" type="text/css" href="style/style.css?v20180105_6" />
+		<link rel="stylesheet" type="text/css" href="style/pc.css?v20180105_7" />
+		<script src="js/ajax.js"></script>
+	</head>
+
+	<body>
+		<div class="loading"></div>
+		<!--移动端简约版开始  断点为<614px-->
+		<div id="box">
+			<header id="header">
+				<div bg_header></div>
+				<div id="now">
+					<span address></span>
+					<div><span temperature></span><sup Centigrade>℃</sup></div>
+					<div><span skycon></span>&nbsp;|&nbsp;空气质量&nbsp;:&nbsp;<span aqi></span><span aqi_level>(优)</span></div>
+				</div>
+				<div bg_left></div>
+				<div bg_right></div>
+				<div bg_tree></div>
+				<div id="now_2">
+					<div>
+						<div wind='direction'>风向</div><span wind='speed'>风速</span><span></span></div>
+					<div border>
+						<div>相对湿度</div><span humidity>0.5</span><span>%</span></div>
+					<div>
+						<div>降水强度</div><span local='intensity'>0</span></div>
+				</div>
+			</header>
+			<div bottom>
+				<div>实时天气</div>
+				<div ly>留言板</div>
+				<div>关于</div>
+			</div>
+		</div>
+		<!--activity的值与循环中的i绑定-->
+		<div activity="1"></div>
+		<div activity="2">
+			<input type="text" value="" placeholder="想和大家说点什么?" />
+			<button>发&nbsp;&nbsp;&nbsp;&nbsp;送</button>
+			<div class="list">
+				<div class="message">
+					<div class="text">为学日益 , 为道日损</div>
+					<div class="userName">2017-12-29</div>
+				</div>
+				<div class="message">
+					<div class="text">谈笑有鸿儒, 往来无白丁</div>
+					<div class="userName">2017-12-29</div>
+				</div>
+				<div class="message">
+					<div class="text">1</div>
+					<div class="userName">2017-12-29</div>
+				</div>
+				<div class="message">
+					<div class="text">111111111111</div>
+					<div class="userName">2017-12-29</div>
+				</div>
+			</div>
+		</div>
+		<div activity="3">
+			<div>
+				啦啦啦
+			</div>
+		</div>
+		<!--移动端简约版结束-->
+
+		<!--pc端开始-->
+		<div id="pc">
+			<input type="text" name="" id="input-city" value="" />
+			<div id="citylist">
+				<i>请输入地名关键字哦</i>
+			</div>
+			<div snow></div>	
+			<div id="pc_now">
+				<label><span address></span><i></i></label>
+				<div><span temperature></span><sup Centigrade>℃</sup></div>
+				<div skycon></div>
+				<div small>
+					<div wind='direction'>风向</div>:<span wind='speed'>风速</span><span></span>
+					<div>相对湿度</div>:<span humidity>0</span><span>%</span>
+					<div>降水强度</div>:<span local='intensity'>0</span>
+					<br/><br/>
+					<span>空气质量指数:</span><span aqi></span><span aqi_level>(优)</span>
+				</div>
+			</div>
+			<div id="hourly">
+				<div>
+					<span everyDayskycon1="date" class="date"></span>
+					<div everyDayskycon1="value"></div>
+					<span everyDayTemperature1="max"></span><i>℃</i>
+					<span class="minTemperature" everyDayTemperature1="min"></span><i class="minTemperature">℃</i>
+					<div class="desc"><span>感冒指数:</span><span everyDayColdRisk1="desc"></span></div>
+				</div>
+				<div>
+					<span everyDayskycon2="date" class="date"></span>
+					<div everyDayskycon2="value"></div>
+					<span everyDayTemperature2="max"></span><i>℃</i>
+					<span class="minTemperature" everyDayTemperature2="min"></span><i class="minTemperature">℃</i>
+					<div class="desc"><span>感冒指数:</span><span everyDayColdRisk2="desc"></span></div>
+				</div>
+				<div>
+					<span everyDayskycon3="date" class="date"></span>
+					<div everyDayskycon3="value"></div>
+					<span everyDayTemperature3="max"></span><i>℃</i>
+					<span class="minTemperature" everyDayTemperature3="min"></span><i class="minTemperature">℃</i>
+					<div class="desc"><span>感冒指数:</span><span everyDayColdRisk3="desc"></span></div>
+				</div>
+				<div>
+					<span everyDayskycon4="date" class="date"></span>
+					<div everyDayskycon4="value"></div>
+					<span everyDayTemperature4="max"></span><i>℃</i>
+					<span class="minTemperature" everyDayTemperature4="min"></span><i class="minTemperature">℃</i>
+					<div class="desc"><span>感冒指数:</span><span everyDayColdRisk4="desc"></span></div>
+				</div>
+				<div>
+					<span everyDayskycon5="date" class="date"></span>
+					<div everyDayskycon5="value"></div>
+					<span everyDayTemperature5="max"></span><i>℃</i>
+					<span class="minTemperature" everyDayTemperature5="min"></span><i class="minTemperature">℃</i>
+					<div class="desc"><span>感冒指数:</span><span everyDayColdRisk5="desc"></span></div>
+				</div>
+			</div>
+			<div text>每小时:
+				<div left>&laquo;</div>
+				<div right>&raquo;</div>
+			</div>
+			<div id="hourly_data">
+			</div>
+			<div id="window">
+				<div id="logo">@彩云天气</div>
+				<div id="today"></div>
+				<div id="minutely"></div>
+				<div></div>
+			</div>
+			<footer>
+				<div id="beian">
+				<a href="#">2018 蜀ICP备17038573号@浩&nbsp;&nbsp;</a>
+				<a href="http://www.caiyunapp.com/">彩云天气</a>&nbsp;
+				<a href="http://www.weather.com.cn/">中国天气网</a>
+				</div>
+			
+			</footer>
+		</div>
+		<script>
+			console.time("网络加载时间:");
+			"use strict";
+
+			//?  数据源更新 视图就自动更新如何做到? 突然发现mvvm框架的好处 渲染数据太方便  代码也好管理
+			/*准备工作 start*/
+			//根数据-用户数据和天气数据:
+			//...
+			let data_root = {
+				activity_index: 999, //多界面层级
+				user: '',
+				weather: '',
+				user_status: 0,
+				address: '地名',
+				point_x: 0,
+				point_y: 0,
+				/*实时天气*/
+				now: {
+					temperature: 0,
+					skycon: '',
+					pm25: 0,
+					aqi: 0,
+					aqi_level: '',
+					cloudrate: 0,
+					humidity: 0,
+					local: { //本地降水强度
+						intensity: ''
+					},
+					wind: {
+						direction: 0, //风向。单位是度。正北方向为0度，顺时针增加到360度。
+						speed: 0 //风速，米制下是公里每小时 -平地上离地10米处的风速值。
+					}
+				},
+				//预报
+				everyDay: {
+					skycon: ''
+				},
+				hourly: {
+					skycon: [0, 0, 0],
+				},
+				minutely:{
+					info:'',
+				},
+
+			};
+			/*工具函数块*/
+			//
+			let mysave = {
+				save(key, value) {
+					localStorage.setItem(key, JSON.stringify(value));
+				},
+				getsave(key) {
+					return JSON.parse(localStorage.getItem(key)) || []; // 第一个正确后面就会被忽略 (如果没有值,返回空字符串)
+				}
+			}
+			//get_el 简化获取dom:
+			const get_el = function(el) {
+				return document.querySelectorAll(el);
+			};
+			//简化设置样式:
+			//原来还有cssText这种代码
+			//2017.12.29  简化设置样式 :元素 样式 是否清空
+			function setStyle(el, strCss, boolean) {
+				for(let i = 0; i < document.querySelectorAll(el).length; i++) {
+					if(typeof arguments[2] == "undefined" || arguments[2] == false) {
+						document.querySelectorAll(el)[i].style.cssText += strCss;
+					} else {
+						document.querySelectorAll(el)[i].style.cssText = strCss;
+					};
+				};
+			}
+			//setStyle("div", 'width:300px;height:400px;background:red',true);
+			//简化数据渲染,可多个元素:
+			function inner(el, text) {
+				for(let i = 0; i < document.querySelectorAll(el).length; i++) {
+					document.querySelectorAll(el)[i].innerHTML = text;
+				};
+			};
+			//自动渲染json数据到相应DOM节点
+			//遍历json对象 最多二级 
+			//? 不应该写typeof...它本身就代表了字符串或者对象
+			function fillJson(json) {
+				let json_length = 0;
+
+				function inner(el, text) {
+					for(let i = 0; i < document.querySelectorAll(el).length; i++) {
+						let oEl = document.querySelectorAll(el)[i];
+						if(oEl != null) {
+							document.querySelectorAll(el)[i].innerHTML = text;
+						}
+					}
+				};
+				for(let items in json) {
+
+					if(json[items] == "[object Object]") {
+
+						for(let itemsChild in json[items]) {
+							inner(`[${items}=${itemsChild}]`, json[items][itemsChild]); //不是嵌套方括号,items是每一项的属性,不是对象
+							//alert(json[itemsChild])
+							//alert("我是对象"+items+"下的对象:"+itemsChild);				
+						}
+					} else {
+						inner(`[${items}]`, json[items]);
+					};
+					json_length++;
+					//alert(items)
+				};
+				return {
+					length: json_length,
+				};
+			};
+			//json数组填充,css3选择器属性名和一个数组,属性名自定义拼接i递增,属性值为数组对象下每一项属性:
+			function fillJsonArray(attributeName, jsonArray) {
+				for(let i = 0; i < jsonArray.length; i++) {
+					for(let items in jsonArray[i]) {
+						//console.log(attributeName+":"+jsonArray[i][items]);
+						inner(`[${attributeName}${i+1}=${items}]`, jsonArray[i][items]);
+					}
+				}
+			};
+			//alert(fillJson(data_root.now).length);
+			//活动界面基类
+			function Activity(id) {
+				//每次创建index都自增  必须设置
+				data_root.activity_index++;
+				let _This = this;
+				let div = get_el(id)[0];
+				let cssText = `position:absolute;top:0px;left:0px;
+				opacity:0;transition:0.6s;background:#FFF;zIndex:999;transform:perspective(800px) rotateY(90deg);`
+				setStyle(id, cssText);
+				this.show = function() {
+					div.style.display = "block";
+					div.style.webkitTransform = "perspective(800px) rotateY(0deg)";
+					div.style.transition = "0.4s";
+					div.style.opacity = "1";
+					div.style.zIndex = data_root.activity_index;
+				};
+				this.hidden = function() {
+					setStyle(id, cssText, true);
+					div.style.display = "none";
+					div.style.transition = "0.4s";
+					div.style.webkitTransform = "perspective(800px) rotateY(-90deg)";
+					div.style.opacity = "0";
+					//div.style.zIndex=parseInt(div.style.zIndex)-1;
+				}
+				if(window.innerWidth <= 641) {
+					//console.log("屏幕<=641px");
+				} else {
+					//console.log("屏幕大于641px");
+					//div.style.width=this.pcWidth;
+					//div.style.height =this.pcHeight;
+				}
+				window.onresize = function() {
+					if(window.innerWidth <= 641) {
+						//alert(this.width)
+					} else {
+						//alert("pc端")
+					}
+				}
+			};
+			/*处理不同界面:	*/
+			(function() {
+				//激活状态改变背景色:
+				let activation_color = "rgba(50,50,50,0.2)";
+				get_el("[bottom] > div:nth-child(1)")[0].style.background = "rgba(50,50,50,0.2)";
+
+				for(let i = 0; i < get_el("[bottom] > div").length; i++) {
+					(function(i) {
+						if(i != 0) {
+							get_el("[bottom] > div")[i].onclick = function() {
+								for(let i2 = 0; i2 < get_el("[bottom] > div").length; i2++) {
+									get_el("[bottom] > div")[i2].style.background = "white";
+									this.style.background = activation_color;
+									get_el("[activity]")[i2].style.opacity = "0.4";
+								}
+
+								//参数拼接 还原css3选择器
+								let activity = new Activity(`[activity=\'${i+1}\']`);
+								for(let i3 = 0; i3 < get_el("[bottom] > div"); i3++) {
+									activity.hidden();
+								}
+								activity.show();
+							}
+						} else {
+							get_el("[bottom] > div")[i].onclick = function() {
+								for(let i = 0; i < get_el("[activity]").length; i++) {
+									let cssText = "position:absolute;top:0px;left:0px;opacity:0;transition:0.6s;background:#FFF;zIndex:999;transform:perspective(800px) rotateY(90deg);"
+									//setStyle("[activity]",cssText,true);
+									//get_el("[activity]")[i].style.opacity="0";//清空活动界面
+									//移动端容易卡  还是none吧。
+									get_el("[activity]")[i].style.display = "none"; //清空活动界面
+									get_el("[bottom] > div")[i].style.background = "white";
+									this.style.background = activation_color;
+								}
+							}
+						}
+					})(i);
+				}
+
+				Activity.prototype = {
+					y: "50"
+				}
+				//alert(Activity.prototype.width)
+
+				/*let a = new Activity("[activity]");
+				let off = true;
+				document.onclick=function(){
+					if(off){
+						a.show();
+					}else{
+						a.hidden();
+					}
+					off=!off;
+				};*/
+
+			})();
+			//用户信息 jsonp跨域数据作为写好函数的参数 :
+			function fun_user(data) {
+				data.status = 0;
+				if(data.status != 0) {
+					console.log("服务器内部错误,默认定位广元");
+					data_root.user = {};
+					data_root.address = "四川省广元";
+					data_root.point_x = '105.89428187022289';
+					data_root.point_y = '32.433762241557968';
+					data_root.user_status = 0;
+				} else {
+					data_root.user = data;
+					data_root.address = data.content.address;
+					data_root.point_x = data.content.point.x;
+					data_root.point_y = data.content.point.y;
+					data_root.user_status = data.status;
+					//实验数据:
+					//data_root.point_x = 105.89428187022289;
+					//data_root.point_y = 32.433762241557968;
+					//川信雪峰校区详细经纬度:105.89802252575632,32.42281849444529
+				}
+
+			};
+
+			//			else{
+			//				let script_baiduMap = document.createElement("script");
+			//				let baiduMapUrl ='http://api.map.baidu.com/location/ip?ak=G9LW5XXPP9mBVZwlga5iqVpvxDP8WMTL&coor=gcj02&callback=fun_user';
+			//				script_baiduMap.setAttribute("src", baiduMapUrl);
+			//				get_el('head')[0].appendChild(script_baiduMap);	
+			//			}
+		</script>
+		<!--跨域加载百度地图 获取用户地理信息-->
+
+		<script src="http://api.map.baidu.com/location/ip?ak=G9LW5XXPP9mBVZwlga5iqVpvxDP8WMTL&coor=gcj02&callback=fun_user">
+			//用户信息 jsonp跨域数据作为参数,如果定位成功则使用定位的经纬度:
+			//h5地理定位里的好像是异步,总是后面的彩云数据加载了,百度ip定位才加载,如果我把彩云数据改到地理定位里,前面写好的函数又要重写,变成局部函数
+			//这里要写三种,地理定位否则if定位  用户修改位置,并且还要更新视图 又要根据经纬度查出城市  ,各种函数嵌套函数 改动太大,写了一半没写了;
+			fun_user(data);
+		</script>
+
+		<script>
+			"use strict";
+			//如果和上次存储数据相距2分钟 那么就从localStorage里面取数据
+			//彩云天气 加载怎么又跑百度地图前面去了
+			//jsonp加载是异步的  巨麻烦  我的链接里有依赖关系  不行哎;
+			//只有先这样了  只是多记载一个百度地图  浪费一点资源
+			if((new Date).getMinutes()+(new Date).getHours()*60 - mysave.getsave("userinfoTime") <= 2 && (new Date).getMinutes()+(new Date).getHours()*60 - mysave.getsave("userinfoTime") >=0&&mysave.getsave("userinfo").x&&mysave.getsave("userinfo").y){
+				
+					if(mysave.getsave("userinfo").city==mysave.getsave("userinfo").county){
+						data_root.address = mysave.getsave("userinfo").province + mysave.getsave("userinfo").county;
+					}
+					else{				
+						data_root.address = mysave.getsave("userinfo").province + mysave.getsave("userinfo").city+ mysave.getsave("userinfo").county;	
+					}
+					data_root.point_x = mysave.getsave("userinfo").x;
+					data_root.point_y = mysave.getsave("userinfo").y;
+				}else{
+					console.log("您还未选择其他城市或者数据过期、出现错误 ,已返回默认来源地址");
+				}
+			
+			//返回值在后面的会先执行,闭包返回的函数 被外部引用
+			let load_data = (function() {
+
+				//alert(data_root.user_status)
+				if(data_root.user_status == 0 || (new Date).getMinutes()+(new Date).getHours()*60 - mysave.getsave("userinfoTime") <= 2 ) {
+					let script_forecast = document.createElement("script");
+					let forecas_url = `https://api.caiyunapp.com/v2/K=AYABoLvCXbQ2CU/${data_root.point_x},${data_root.point_y}/forecast.jsonp?callback=load_data.fun_forecast`;
+					script_forecast.setAttribute("src", forecas_url);
+					get_el('head')[0].appendChild(script_forecast);
+
+					//加载实时数据
+					let script_weather = document.createElement("script");
+					let url = `http://api.caiyunapp.com/v2/K=AYABoLvCXbQ2CU/${data_root.point_x},${data_root.point_y}/realtime.jsonp?callback=load_data.fun_jsonp`;
+					script_weather.setAttribute("src", url);
+					get_el('head')[0].appendChild(script_weather);
+				}
+				return {
+					fun_jsonp: function(data) {
+						data_root.weather = data;
+						data_root.now.temperature = data.result.temperature;
+						data_root.now.skycon = data.result.skycon;
+						data_root.now.pm25 = data.result.pm25;
+						data_root.now.aqi = data.result.aqi;
+						data_root.now.cloudrate = data.result.cloudrate;
+						data_root.now.humidity = data.result.humidity;
+						data_root.now.local.intensity = data.result.precipitation.local.intensity;
+						data_root.now.wind.direction = data.result.wind.direction;
+						data_root.now.wind.speed = data.result.wind.speed;
+					},
+					fun_forecast: function(data) {
+						data_root.everyDay = data.result.daily; //每天天气概括, array,数据太多  搞错了
+						data_root.hourly = data.result.hourly; //48小时各项详细数据	array	
+						data_root.minutely.info=data.result.minutely.description;
+
+					},
+				}
+			})(); //load_data.fun_jsonp();
+			//加载预报数据 
+
+			console.timeEnd("网络加载时间:");
+			/*准备工作 end*/
+			window.onload = function() {
+				console.time("完成耗时:");
+				//移除加载动画  其他动画 :
+				(function() {
+
+					if(innerWidth > 641) {
+						get_el("#pc")[0].style.display = "block";
+					} else {
+						get_el("#box")[0].style.display = "block";
+					};
+					window.onresize = function() {
+						if(innerWidth > 641) {
+							get_el("#pc")[0].style.display = "block";
+						} else {
+							get_el("#box")[0].style.display = "block";
+						}
+					}
+					//block时 css动画才会触发 这么智能?				
+					setTimeout(function() {
+						get_el(".loading")[0].style.display = "none";
+						get_el("#hourly_data")[0].style.left = '0vw';
+					}, 500);
+					setTimeout(function() {
+						get_el("[bg_header]")[0].style.top = "0px";
+						get_el("[bg_header]")[0].style.opacity = "1";
+						setStyle('#pc #hourly',"opacity:1;top:47%");
+					}, 1000);
+
+				})();
+				/*活动界面 留言板 */
+					get_el("[ly]")[0].addEventListener('click', function() { //事件监听 追加函数 -获得焦点
+						//移动端弹出输入法卡顿  注释掉
+						//get_el("[activity='2'] input")[0].focus();
+
+					});
+				/*处理数据: */ // switch不能传实参哎  难以重复利用  
+				//实时与预报天气概括:data_root.now.skycon,data_root.everyDay.skycon[i].value
+				//				function switchSkycon(data){
+				//					let metadata='';
+				//				if(arguments[0]== data_root.now.skycon){
+				//					metadata=data_root.now.skycon;
+				//				}else{
+				//					metadata=data;
+				//				}
+				function typeSkycon() {
+					switch(data_root.now.skycon) {
+						case "CLEAR_DAY":
+							data_root.now.skycon = "晴朗";
+							break;
+						case "CLEAR_NIGHT":
+							data_root.now.skycon = "晴夜";
+							break;
+						case "PARTLY_CLOUDY_DAY":
+							data_root.now.skycon = "多云";
+							break;
+						case "PARTLY_CLOUDY_NIGHT":
+							data_root.now.skycon = "夜间多云";
+							break;
+						case "SNOW":
+							data_root.now.skycon = "雪";
+							break;
+						case "CLOUDY":
+							data_root.now.skycon = "阴天";
+							break;
+						case "RAIN":
+							data_root.now.skycon = "雨天";
+							break;
+						case "WIND":
+							data_root.now.skycon = "大风";
+							break;
+						case "HAZE":
+							data_root.now.skycon = "霾";
+							break;
+						case "FOG":
+							data_root.now.skycon = "雾";
+							break;
+						case "SLEET":
+							data_root.now.skycon = "冻雨";
+							break;
+						default:
+							"未知天气";
+							break;
+					};
+					for(let i = 0; i < data_root.everyDay.skycon.length; i++) {
+						if(data_root.everyDay.skycon[i].value == "CLEAR_DAY") {
+							data_root.everyDay.skycon[i].value = "晴朗";
+						} else if(data_root.everyDay.skycon[i].value == "CLEAR_NIGHT") {
+							data_root.everyDay.skycon[i].value = "晴夜";
+						} else if(data_root.everyDay.skycon[i].value == "PARTLY_CLOUDY_DAY") {
+							data_root.everyDay.skycon[i].value = "多云";
+						} else if(data_root.everyDay.skycon[i].value == "PARTLY_CLOUDY_NIGHT") {
+							data_root.everyDay.skycon[i].value = "夜间多云";
+						} else if(data_root.everyDay.skycon[i].value == "SNOW") {
+							data_root.everyDay.skycon[i].value = "雪";
+						} else if(data_root.everyDay.skycon[i].value == "CLOUDY") {
+							data_root.everyDay.skycon[i].value = "阴天";
+						} else if(data_root.everyDay.skycon[i].value == "RAIN") {
+							data_root.everyDay.skycon[i].value = "雨天";
+						} else if(data_root.everyDay.skycon[i].value == "WIND") {
+							data_root.everyDay.skycon[i].value = "大风";
+						} else if(data_root.everyDay.skycon[i].value == "HAZE") {
+							data_root.everyDay.skycon[i].value = "霾";
+						} else if(data_root.everyDay.skycon[i].value == "FOG") {
+							data_root.everyDay.skycon[i].value = "大雾";
+						}
+					}
+
+				}
+				typeSkycon();
+
+				//空气质量:
+				(function() {
+					//空气质量 自动调整文字颜色
+					let red = 0;
+					let green = 0;
+					let proportion_corlor = 0;
+					if(data_root.now.aqi >= 0 && data_root.now.aqi <= 50) {
+						proportion_corlor = 2;
+						data_root.now.aqi_level = '(优)';
+					} else if(data_root.now.aqi > 50 && data_root.now.aqi <= 100) {
+						proportion_corlor = 1;
+						data_root.now.aqi_level = '(良)';
+					} else if(data_root.now.aqi > 100 && data_root.now.aqi <= 150) {
+						proportion_corlor = 1.2;
+						data_root.now.aqi_level = '(轻度污染)';
+					} else if(data_root.now.aqi > 150 && data_root.now.aqi <= 200) {
+						proportion_corlor = 0.8;
+						data_root.now.aqi_level = '(中度污染)';
+					} else if(data_root.now.aqi > 200) {
+						proportion_corlor = 0.1;
+						data_root.now.aqi_level = '(重度污染)';
+					}
+					red = parseInt(data_root.now.aqi / proportion_corlor); //如果不转换  rgba的小数 颜色会出现问题
+					//纠正黄色颜色过浅
+					if(data_root.now.aqi >= 51 && data_root.now.aqi <= 130) {
+						red += 120;
+						green += 255 - red + 200;
+					} else {
+						green = 255 - red; //绿色和红色正常;
+					}
+
+					for(let i = 0; i < get_el("[aqi],[aqi_level]").length; i++) {
+						get_el("[aqi],[aqi_level]")[i].style.color = `rgba(${red},${green},0,1)`;
+						//根据空气质量等级描述的字数  自动按比例调整字体大小:
+						let word_number = get_el("[aqi],[aqi_level]")[1].innerHTML.split("").length;
+						let proportion_font = 0;
+						proportion_font = 4 / word_number;
+						get_el("[aqi],[aqi_level]")[1].style.fontSize = proportion_font + "rem";
+					}
+				})();
+
+				//风向与风速级别:
+				(function() {
+					let fx = data_root.now.wind.direction;
+					let speed = data_root.now.wind.speed;
+					if(fx > 350 && fx <= 10) {
+						data_root.now.wind.direction = "北风";
+					} else if(fx > 10 && fx <= 80) {
+						data_root.now.wind.direction = "东北风";
+					} else if(fx > 80 && fx <= 100) {
+						data_root.now.wind.direction = "东风";
+					} else if(fx > 100 && fx <= 170) {
+						data_root.now.wind.direction = "东南风";
+					} else if(fx > 170 && fx <= 190) {
+						data_root.now.wind.direction = "南风";
+					} else if(fx > 190 && fx <= 260) {
+						data_root.now.wind.direction = "西南风";
+					} else if(fx > 260 && fx <= 280) {
+						data_root.now.wind.direction = "西风";
+					} else {
+						data_root.now.wind.direction = "西北风";
+					};
+					//风速 返回值给给匿名函数再赋值给数据对象,简化else:
+					data_root.now.wind.speed = (function() {
+						if(speed <= 1) {
+							data_root.now.wind.direction = "无风";
+							return "炊烟袅袅-0级";
+						}
+						if(speed > 1 && speed <= 5) {
+							return "烟示风向-1级"
+						}
+						if(speed > 5 && speed <= 11) {
+							return "轻风-2级";
+						}
+						if(speed > 11 && speed <= 19) {
+							return "旌旗展开-3级";
+						}
+						if(speed > 19 && speed <= 28) {
+							return "吹起尘土-4级";
+						}
+						if(speed > 28 && speed <= 38) {
+							return "小树摇摆-5级";
+						}
+						if(speed > 38 && speed <= 49) {
+							return "强风-6级";
+						}
+						if(speed > 49 && speed <= 61) {
+							return "妖风盛行-7级";
+						}
+						if(speed > 61 && speed <= 74) {
+							return "折毁树枝-8级";
+						}
+						if(speed > 74 && speed <= 88) {
+							return "小损房屋-9级";
+						}
+						if(speed > 88 && speed <= 102) {
+							return "拔起树木-10级";
+						}
+						if(speed > 102 && speed <= 117) {
+							return "暴风-11级";
+						}
+						if(speed > 117 && speed <= 134) {
+							return "台风-12级";
+						}
+						if(speed > 134 && speed <= 149) {
+							return "二级飓风-13级";
+						} else {
+							return "毁天灭地-顶级";
+						};
+
+					})();
+				})();
+
+				//相对湿度:
+			
+					data_root.now.humidity = (data_root.now.humidity * 100).toFixed(1);
+			
+				/*填充pc和移动端数据:*/
+				//				inner("[address]", data_root.address);
+				//				inner("[wendu]", data_root.now.temperature);
+				//				inner("[tianqi]", data_root.now.skycon);
+				////				inner("[aqi]", data_root.now.aqi);
+
+				fillJson(data_root).length;
+				fillJson(data_root.now);
+				fillJsonArray('everyDayskycon', data_root.everyDay.skycon);
+				fillJsonArray('everyDayTemperature', data_root.everyDay.temperature);
+				fillJsonArray('everyDayColdRisk', data_root.everyDay.coldRisk);
+				//				inner("[aqi_level]", data_root.now.aqi_level);
+				//				inner("[wind]", data_root.now.wind.direction);
+				//				inner("[wind_num]", data_root.now.wind.speed);
+				//				inner("[humidity]", data_root.now.humidity);
+				//				inner("[intensity]", data_root.now.local.intensity);
+				//48小时预报:
+				//创建div 
+				(function() {
+					for(let i = 0; i < data_root.hourly.temperature.length; i++) {
+						let div = document.createElement("div");
+						get_el("#hourly_data")[0].appendChild(div);
+					};
+				})();
+				//48小时左右动画
+				//get_el("#hourly_data")[0].style.left = '100vw';
+				(function() {
+					
+					//初始信息
+					let distance = 0;
+					
+					get_el("#pc [text] [left]")[0].style.color="red";
+					get_el("#hourly_data")[0].style.left == '0vw';
+					get_el("#pc [text] [left]")[0].onclick = function() {
+						get_el("#pc [text] [right]")[0].style.color="white";
+						if(get_el("#hourly_data")[0].style.left == '0vw') {
+							this.style.color="red";
+							return 0;
+						}
+						distance += 100;
+						get_el("#hourly_data")[0].style.left = distance + 'vw';
+					}
+					get_el("#pc [text] [right]")[0].onclick = function() {
+						get_el("#pc [text] [left]")[0].style.color="white";
+						if(distance <= -800) { //不能完美
+							this.style.color="red";
+							return 0;
+						}
+						distance -= 100;
+						get_el("#hourly_data")[0].style.left = distance + 'vw';
+					}
+				})();
+
+				function forrecast48() {
+					for(let i = 0; i < get_el("#pc #hourly>div").length; i++) {
+						
+						//get_el("#pc #hourly>div")[i].addEventListener('click',function(){
+						(function() {
+							for(let i2 = 0; i2 < data_root.hourly.temperature.length; i2++) {
+								get_el("#hourly_data div")[i2].innerHTML = data_root.hourly.temperature[i2].value + "℃" + "<span>" + data_root.hourly.temperature[i2].datetime + "</span>";
+
+							}
+						})();
+						//});
+					}
+
+				};
+				forrecast48();
+				//不同时间 天气 更换背景 天气优先
+				(function() {
+					//data_root.now.skycon = "晴夜";
+					if(data_root.now.skycon == "晴夜") {
+						get_el("[bg_header]")[0].style.background = "url(images/qy.jpg)";
+						return 0;
+					}
+					(function() {
+						let houre = new Date().getHours();
+						if(houre >= 18 || houre <= 6) {
+							get_el("[bg_header]")[0].style.background = "url(images/farewell.jpg)";
+							get_el("[bg_left]")[0].style.background = "url(images/bg_sunny_left_night.png)";
+							get_el("[bg_right]")[0].style.background = "url(images/bg_sunny_right_night.png)";
+							get_el("[bg_tree]")[0].style.background = "url(images/bg_sunny_tree_night.png)";
+							return;
+						}
+						if(houre >= 7 && houre <= 9) {
+							get_el("[bg_header]")[0].style.background = "url(images/bg_sunny.png)";
+							get_el("#pc")[0].style.background = "url(images/bg_sunny.png)";
+							return;
+						}
+						if(houre >= 10 && houre <= 14) {
+							get_el("[bg_header]")[0].style.background = "url(images/fre_background.jpg)";
+							get_el("#pc")[0].style.background = "url(images/fre_background.jpg)";
+							return;
+						}
+						if(houre >= 15 && houre < 18) {
+							get_el("[bg_header]")[0].style.background = "url(images/423x173/12.jpg)";
+							return;
+						}
+					})();
+					(function() {
+						if(data_root.now.skycon == "雨天") {
+							get_el("[bg_header]")[0].style.background = "url(images/423x173/46.jpg)";
+							get_el("#pc")[0].style.background="url(images/423x173/46.jpg)";
+							return;
+						}
+						if(data_root.now.skycon == "大风") {
+							get_el("[bg_header]")[0].style.background = "url(images/423x173/91.jpg)";
+							return;
+						}
+						if(data_root.now.skycon == "多云" || data_root.now.skycon == "夜间多云") {
+							get_el("[bg_header]")[0].style.background = "url(images/423x173/3.jpg)";
+							return;
+						}
+						if(data_root.now.skycon == "阴天") {
+							get_el("[bg_header]")[0].style.background = "url(images/423x173/5.jpg)";
+							return;
+						}
+					})();
+
+				})();
+				/*pc端每天  每小时*/
+
+				(function() {
+					for(let i = 0; i < get_el("#pc #hourly>div").length; i++) {
+						get_el("#pc #hourly > div")[i].onclick = function() {
+							for(let i2 = 0; i2 < get_el("#pc #hourly > div").length; i2++) {
+								get_el("#hourly>div")[i2].style.background = "";
+							}
+							get_el("#hourly>div")[i].style.background = "rgba(255,255,255,0.1)";
+						}
+					}
+				})();
+				/*更换城市块*/
+				(function() {
+
+					document.addEventListener('click', function() {
+						get_el("#input-city")[0].style.display = "none";
+						get_el("#citylist")[0].style.transform = "scale(0)";
+					});
+					get_el("#input-city")[0].onclick = function(e) {
+						e.stopPropagation(); //阻止冒泡
+						get_el("#input-city")[0].style.display = "inline-block";
+
+					}
+
+					for(let i = 0; i < get_el("#pc [address]+i,#pc [address]").length; i++) {
+						get_el("#pc [address]+i,#pc [address]")[i].onclick = function(e) {
+
+							e.stopPropagation(); //阻止冒泡
+							get_el("#input-city")[0].style.display = "inline-block";
+							get_el("#input-city")[0].focus(); //focus 不是foucs//呜呜
+							get_el("#citylist")[0].style.transform = "scale(1)";
+						}
+					};
+
+					//ajax请求 智能搜索城市
+					let userinfo = [];
+					let userinfoTime = []; //记录的时间;
+					//后面写的push是追加  这里不能预先设置一组,顺序会错乱.
+					//					userinfo =[{
+					////					x:null,
+					////					y:null,
+					////					cityName:null
+					//				}];
+					//let divLength = 0;//存储刷新div个数
+					//let newCityDiv = null;//存储新的div对象;
+					get_el("#input-city")[0].oninput = function() {
+						userinfo=[];
+						userinfoTime = [];//忘了清空  否则会重叠前面的数据
+						let value = get_el("#input-city")[0].value;
+						const re = /[*#%$:;{}>.()\+%&^@!=+_-\`\"!\\\/]|[0-9]|[a-z]|\s+/ig;
+						if(re.test(value)){
+							inner('#citylist', '<i></	i>');
+							inner('#citylist i', '不允许注入哦!');
+						}else{
+						value = value.replace(re, '');
+						ajax("post", '/node/city', value, function(data) {
+							//搞了半天  原来json JSON.parse(data).length没解析是字符串,解析了才是数组对象,而且当服务器发送下面的文字时,data没解析  字符串长度太长 循环次数超过解析后的长度(else里面的json又解析了的);
+							if(data == "请输入正确名字哦" || data == "想找哪个城市呢?") {
+								console.log(data);
+								inner('#citylist i', data);
+							}
+							else if(data == "") {
+								inner('#citylist i', '仅输入当地地名搜索更精准!');
+							}
+							else {
+								inner('#citylist i', '仅输入当地地名搜索更精准!');
+								let parent = get_el("#citylist")[0];
+								for(let i = 0; i < JSON.parse(data).length; i++) {
+									if(get_el("#citylist>div").length == 0) {
+										//console.log(get_el("#citylist>div").length);
+									} else {
+										//let son = get_el("#citylist>div");
+										//parent.removeChild(son);
+										parent.innerHTML = "<i>仅输入当地地名搜索更精准</i>"; //清空并且保留i提示标签.
+									}
+								};
+								for(let i = 0; i < JSON.parse(data).length; i++) {
+									let div = document.createElement("div");
+									get_el("#citylist")[0].appendChild(div);
+									//let	divLength = JSON.parse(data).length;//刷新城市列表里div的个数;
+									//let	newCityDiv = get_el("#citylist div");								
+									console.log("json长度" + JSON.parse(data).length);
+									console.log(JSON.parse(data));
+									get_el("#citylist div")[i].innerHTML = JSON.parse(data)[i].province + `<span>${JSON.parse(data)[i].county}</span>`;
+									console.log(JSON.parse(data)[i].x);
+									// console.log(userinfo[i].x);
+
+									// userinfo[i].y=JSON.parse(data)[i].y;
+									//userinfo[i].cityName=JSON.parse(data)[i].province+JSON.parse(data)[i].county;
+									(function(i) {
+										//for(;i<get_el("#citylist>div").length;i++){
+										userinfo.push(JSON.parse(data)[i]);
+										//保存 记录的时间
+										userinfoTime.push((new Date).getMinutes()+(new Date).getHours()*60);
+										console.log(i + "个");
+										//alert(get_el("#citylist>div")[i]);
+										/*哎  这里浪费了两个小时 > get_el("#citylist>div")[i] 有时候无效 尝试了很多办法  最终发现 css里设置的失去焦点 会和这里冲突!!! */
+										get_el("#citylist>div")[i].onclick = function(e) {
+											if(userinfo[i].x&&userinfo[i].y){
+												mysave.save("userinfo", userinfo[i]);
+											}else{
+												mysave.save("userinfo", {});
+											}
+											mysave.save("userinfoTime", userinfoTime[i]);
+											//难以重新触发代码更新更新视图 ,那就另寻办法  哈哈  把数据存到本地  再重新加载整个窗口 哈哈;
+											//加载太快了有时出bug  
+											setTimeout(function() {
+												window.location.reload();
+											}, 500);
+											//console.log("?????");
+											e.stopPropagation();
+											//console.log(i+"我被点击了");		
+
+											//}
+										}
+									})(i);
+
+								}
+
+								//else结束
+							}
+						});
+						//点击每一个城市 存入经纬度和地名  							
+					}};
+					//citylist 里面的div是动态生成的  外部无法监听有多少个div 写在里面又无法随时被触发点击			
+
+				})();
+		//弹窗预报信息:
+		(function(){
+			let t =null;
+			for(let i=0;i<get_el("#pc #hourly>div").length;i++){
+				
+				get_el("#pc #hourly>div")[i].onclick=function(){
+					clearTimeout(t);
+					get_el("#window")[0].style.left="0%";
+				 t = setTimeout(function(){
+			get_el("#window")[0].style.left="-100%";
+		},5000);
+				}
+			}
+		})();
+		inner("#window #minutely",data_root.minutely.info);
+		inner("#window #today",data_root.hourly.description);
+		setTimeout(function(){
+			get_el("#window")[0].style.left="-100%";
+		},4000);
+				console.timeEnd("完成耗时:");
+
+}
+		</script>
+	</body>
+
+</html>

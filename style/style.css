@@ -1,0 +1,371 @@
+html,
+body {
+	width: 100%;
+	font-size: 62.5%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: rgba(50, 50, 50, 1);
+	height: 100%;
+}
+@media (max-width: 319px) {
+	html {
+		font-size: 25% !important;
+	}
+}
+
+@media only screen and (min-width: 317px) {
+	html {
+		font-size: 55% !important;
+	}
+}
+
+@media only screen and (min-width: 350px) {
+	html {
+		font-size: 65% !important;
+	}
+}
+
+@media only screen and (min-width: 428px) {
+	html {
+		font-size: 67.5% !important;
+	}
+}
+
+@media only screen and (min-width: 481px) {
+	html {
+		font-size: 70% !important;
+	}
+}
+
+@media only screen and (min-width: 569px) {
+	html {
+		font-size: 72.5% !important;
+	}
+}
+
+@media only screen and (min-width: 641px) {
+	html {
+		font-size: 75% !important;
+	}
+	body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	background: rgba(50, 50, 50, 1);
+	height: 100%;
+}
+	#box {
+		display: none !important;
+	}
+	#pc{
+		display: none ;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	html {
+		font-size: 80% !important;
+	}
+}
+
+
+/*animate 取出来*/
+
+@keyframes slideInLeft {
+	from {
+		transform: translate3d(-100%, 0, 0);
+		visibility: visible;
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+#box {
+	/*父级没加相对定位  后代元素有绝对定位溢出隐藏将失效*/
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	font-size: 1.6rem;
+	display: none;
+}
+
+@keyframes rotate {
+	to {
+		transform: rotate(360deg);
+		opacity: 0.1;
+	}
+}
+
+@keyframes radius {
+	50% {
+		border-radius: 50%;
+		opacity: 0.1;
+	}
+}
+
+@keyframes color {
+	50% {
+		color: orange;
+	}
+	96% {
+		color: red;
+		opacity: 0.5;
+	}
+}
+
+@keyframes width {
+	50% {
+		border-width: 0.1rem;
+		opacity: 0.2;
+	}
+}
+
+@keyframes shadow {
+	10% {
+		box-shadow: 2px 2px 50px gold;
+		opacity: 0.2;
+	}
+}
+
+.loading {
+	z-index: 99;
+	left: 50%;
+	top: 20%;
+	position: absolute;
+	width: 2rem;
+	height: 2rem;
+	padding: 2rem;
+	border: 1.5rem solid;
+	margin-left: -4rem;
+	color: deepskyblue;
+	animation: rotate 1s infinite, radius .7s infinite, color .5s infinite, width 2s infinite, shadow 1s infinite;
+	animation-timing-function: linear;
+}
+
+header {
+	animation-name: slideInLeft;
+	animation-duration: 1.5s;
+	/*向前和向后填充模式都被应用(保持动画最后和开始的属性)。*/
+	animation-fill-mode: both;
+	animation-timing-function: ease;
+	width: 100%;
+	height: 50vh;
+	padding: 2rem;
+	color: white;
+	transition: 1s;
+	font: 1.6rem/1.6rem "微软雅黑";
+}
+
+[bg_header] {
+	transition: top 1.2s, opacity 2.5s;
+	opacity: 0;
+	z-index: -1;
+	width: 100vw;
+	height: 50vh;
+	position: absolute;
+	left: 0;
+	top: -100%;
+	transition-timing-function: ease;
+	background: url(../images/423x173/12.jpg);
+	/*没加!important  js改背景又出问题*/
+	background-repeat: no-repeat !important;
+	background-size: 100vw 50vh !important;
+}
+
+header [bg_left],
+[bg_right],
+[bg_tree] {
+	width: 100%;
+	height: 50%;
+	position: absolute;
+	left: 0;
+	z-index: 0;
+	top: 70%;
+	transition: 0.5s;
+	background-repeat: no-repeat !important;
+}
+
+[bg_left] {
+	background: url(../images/bg_sunny_left.png);
+	background-size: 100% 80% !important;
+}
+
+[bg_right] {
+	background: url(../images/bg_sunny_right.png) no-repeat;
+	background-size: 100% 80% !important;
+}
+
+@keyframes tree {
+	from {
+		transform: rotate(-15deg);
+	}
+	to {
+		transform: rotate(15deg);
+	}
+}
+
+[bg_tree] {
+	width: 420px;
+	height: 420px;
+	animation: tree 3s infinite alternate-reverse;
+	transform-origin: 20% 40% !important;
+	background: url('../images/bg_sunny_tree.png') no-repeat;
+	background-size: 50% 50% !important;
+	top: 37%;
+	left: 45%;
+}
+
+#now [temperature] {
+	font: 5rem/6rem "黑体";
+	margin-left: 2rem;
+}
+
+#now [Centigrade] {
+	font: 3rem/6rem arial;
+}
+
+#now [aqi] {
+	color: rgba(250, 255, 0, 1);
+}
+
+#now [aqi_level] {
+	font-size: 1rem;
+	color: rgba(250, 255, 0, 1);
+}
+
+#now_2 {
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	margin-left: -18rem;
+	z-index: 2;
+	top: 88%;
+}
+
+#now_2>div {
+	display: inline-block;
+	min-width: 10rem;
+	height: auto;
+	text-align: center;
+	line-height: 3rem;
+	position: relative;
+}
+
+#now_2 [border] {
+	border-radius: 3%;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	padding: 0 0.5rem 0 0.5rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+#weather {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	z-index: 1;
+}
+/*activity*/
+[activity]{
+	/*硬件加速提高性能*/
+   transform: translateZ(0);
+   -webkit-backface-visibility: hidden !important;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+  
+	/*vw vh不能滥用哎  导致计算次数过多  移动端性能问题*/
+	font-size:1.6rem ;
+	width: 100%;
+	height: 100%;
+	transition: 0.6s !important;
+	transform-style:preserve-3d !important;
+	transform:perspective(800px) rotateY(90deg);
+}
+[bottom]{
+	/*? box加了高度 这个元素才有效*/
+	width: 100vw;
+	height: 6rem;
+	color: black;
+	position: absolute;
+	/*100vh  移动端容易卡*/
+	bottom:0;
+	background:white;
+	z-index: 9999;
+	box-shadow: 1px -1px 5px #000000;
+}
+[bottom] > div{
+	transition: 1s;
+	float: left;
+	width: 33.33vw;
+	text-align: center;
+	line-height: 6rem;
+	
+}
+/*新建的activity界面初始值没有设置绝对定位 导致布局重写很多.....*/
+[activity]{
+	position: absolute;
+}
+[activity='3']{
+	color: red;
+}
+[activity='2'] input{
+	position: absolute;
+	border:0.1px solid black;
+	box-shadow: 2px 2px 50px black;
+	width: 100%;
+	height: 5rem;
+	margin: 0 auto;
+	clear: both;
+}
+/*去除默认样式*/
+[activity='2'] button{
+	width: 7rem;
+	height: 5.4rem;
+	position: absolute;
+	right: 0rem;
+	top: 0;
+	background: rgba(200,200,200,0.2);
+	border: none;
+	outline: blue;
+	
+}
+.list{
+	width: 100%;
+	position: absolute;
+	top:10rem;
+}
+.list .message{
+	width:100%;
+	height: 5rem;
+	border-top: 0.1px solid rgba(50,50,50,0.3);
+}
+.list .message .text{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	text-indent: 2rem;
+	line-height: 3rem;
+}
+.list .message .userName{
+	opacity: 0.4;
+	font-size:1.2rem ;
+	float: right;
+	margin-right:1rem ;
+}
+.list .message:last-child{
+	border-bottom:1px solid rgba(50,50,50,0.3);
+}
+.list .message:active{
+	background: rgba(60,60,60,0.1);
+}
+[activity='2'] button:active{
+	background: rgba(50,50,50,0.5);
+	border: none;
+}

@@ -1,0 +1,315 @@
+#pc{
+	display: none;
+	user-select: none;
+	width:100%;
+	height: 100%;
+	background: url(../images/farewell.jpg);
+	background-size:100% 100% !important;
+	background-repeat:no-repeat !important;
+	font-size:1.6rem;
+	font-family: "新宋体";
+	color: white;
+	position: relative ;
+	top: 0;
+	left: 0;
+}
+@keyframes snow_dancing{
+	0%{background-position:0 0,0 0;transform: scale(1)}
+	50%{background-position:1500px 1500px,3000 1000;transform: scale(1.2)}
+	/*x y方向  和图片大小不符合 时 结束会闪回去*/
+	100%{background-position:1000px 1000px, 3000px 1000px ;transform: scale(1);}
+}
+[snow]{	
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/snow/snow1.png),url(../images/snow/snow2.png);
+	/*设置两组图片初始位置*/
+	-background-position:0 0,0 0;
+	opacity: 1;
+	animation: snow_dancing 40s  linear infinite;
+	/* 2017.12.30-pointer-events: none。它将不会捕获任何click事件，而是让事件穿过该元素到达下面的元素。 */
+	pointer-events: none;
+	z-index: 99;
+}
+#pc_now{
+	width: 50rem;
+	height: 17rem;
+	color: white;
+	font-size:2rem ;
+	text-align: center;
+	-background: black;
+	position: absolute;
+	left: 50%;
+	margin-top:0rem ;
+	margin-left:-25rem ;
+	
+}
+#pc_now [address]{
+	
+}
+#pc_now [address] + i{
+	display: inline-block;
+	width: 3rem;
+	height:3rem;
+	margin-bottom: -0.5rem;
+	background: url(../images/location.png);
+	background-size:100% 100%; 
+	
+}
+#pc_now [temperature]{
+	font: 5rem/5rem "黑体";
+}
+#pc_now [Centigrade] {
+	font: 3rem/0rem arial;
+}
+#pc_now [skycon]{
+	font: 2rem/2rem arial;
+	margin-bottom: 1rem;
+}
+#pc_now [small],#pc_now [small] div,#pc_now [small] div span{
+	font:1rem/1rem "微软雅黑" ;
+	display: inline-block;
+}
+#pc_now [aqi] ,#pc_now[aqi_level]{
+	font-size: 1.5rem;
+}
+#pc #hourly{
+	opacity: 0;
+	width: 120vw;	
+	padding: 0;
+	position:absolute;
+	/*47*/
+	top: 57%;
+	left: 2vw;
+	margin-top:-7rem;
+	transition: 0.5s linear;
+}
+#pc #hourly > div{
+	padding: 0.7rem;
+	display: inline-block;	
+	width: 12.5rem;
+	outline: solid rgba(200, 200, 200, 0.1);
+	transition: 0.3s;
+	height: 10rem;
+}
+#pc #hourly >div:hover{
+	outline: solid rgba(200, 200, 200, 0.5);
+}
+#pc #hourly >div span{
+	display: inline-block;
+}
+#pc #hourly i:not(.minTemperature){
+	font-size: 1.3rem;
+}
+#pc #hourly * {
+	padding-top: 0.5rem;
+}
+#hourly_data{
+	transition: 0.8s ease-out;
+	overflow: hidden;
+	position:absolute;
+	width: 1000%;
+	top: 64%;
+	left:100vw;
+	margin-left:2vw;
+	height: 10rem;
+	border-top:1px solid white ;
+	border-bottom:1px solid white ;
+}
+#hourly_data div{
+	transition: 0.6s;
+	padding: 1rem;	
+	position:relative;
+	font-size: 2rem;
+	text-align: center;
+	left: 0vw;
+	margin: 0;
+	padding: 0;
+/*inline-block导致默认间距  
+1、直接把元素写在一行上或把闭合标签和第二个开始标签写在一行或两行间添加注释。
+
+2、设置margin-right为负值，但要考虑上下文的字体和文字大小。
+
+3、浮动：float:left;
+*/
+	display:inline-block;
+	width: 15rem;
+	height: 10rem;
+	line-height: 10rem;
+	float:left;
+	-background: red;
+}
+#pc [text]{
+	display: inline-block;
+	position:absolute;
+	top: 60%;
+	left: 2vw;
+	
+}
+/*左按钮*/
+#pc [text] [left]{
+	width: 5rem;
+	height: 3rem;
+	font-size: 2rem;
+	position: absolute;
+	left: 2vw;
+	top: 3rem;
+	z-index: 10000;
+}
+#pc [text] [right]{
+	width: 5rem;
+	height: 3rem;
+	font-size: 2rem;
+	position: absolute;
+	left: 95vw;
+	top: 3rem;
+	z-index: 10000;
+}
+.date{
+	margin-top: -1rem;
+	font-size: 1.1rem;
+}
+.minTemperature{
+	margin-left: 0.2rem;
+	opacity: 0.6;
+	font-size: 1.2rem;
+}
+.desc{
+	font-size: 1rem;
+	font-family: "新宋体";
+}
+#hourly_data span{
+	width:15rem ;
+	height: 10rem;
+	display: inline-block;
+	font-size: 1.2rem;
+	opacity: 0.6;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left:-7.5rem;
+	margin-top:-2rem ;
+}
+#input-city{	
+	display: none;
+	width:20rem;
+	height: 2rem;
+	background: white;
+	border-radius:0px;
+	position: absolute;
+	outline: none;
+	padding: 0.5rem;
+	border: 1px solid black;
+	right: 1%;
+	top: 5%;
+	z-index: 9999;
+	transition: 0.5s ease-in-out;
+}
+#citylist{ 
+	position: absolute;
+	z-index: 9999;
+	padding: 0.5rem;
+	right: 1%;
+	top: 5%;
+	margin-top:4rem ;
+	border: 1px solid rgba(0,0,0,0.8);
+	width: 20rem;
+	background: rgba(0,0,0,0.5);	
+	transform: scale(0);
+	transition: 0.8s ease;
+	transform-origin: left; 
+}
+#citylist div{
+	width: 100%;
+	min-height:2.5rem;
+	line-height: 2.5rem;
+	background: rgba(0,0,0,0.5);
+	z-index: 9999;
+}
+#citylist div:hover{
+	background:deepskyblue ;
+}
+/*获得焦点 ,选择兄弟元素*/
+/*#input-city:focus + #citylist {
+	transform: scale(1);
+}*/
+/*插入三角形*/
+#citylist::before{
+	width: 0px;
+	height: 0px;
+	/*不加content: ""不会插入*/
+	content: "";
+	/*transparent透明*/  
+	border-left:10px solid rgba(0,0,0,0);
+	border-right:5px solid rgba(0,0,0,0);
+	border-bottom:8px solid rgba(0,0,0,0.8);
+	position: absolute;
+	top: -9px;
+	left: 0px;
+ 
+}
+@keyframes windowLeft{
+	0%{left:-100%;opacity: 0;}
+	100%{left:0%;opacity: 1;}
+}
+
+#window{
+	min-width: 8.09rem;
+	transition: 1s;
+	height: 8rem;
+	line-height: 2.2rem;
+	animation: windowLeft 2s 0.1s ease;
+	position: absolute;
+	padding: 1.5rem;
+	font-size:1.2rem ;
+	top: 2rem;
+	background:-webkit-linear-gradient(45deg,rgba(234, 101, 10, 0.1), rgba(100, 239, 106, 0.1));
+	left: 0;
+	
+}
+#window #logo{
+	font-family: "STCaiyun","STxingkai","Arial";
+	font-size: 1.8rem;
+	background-image:-webkit-linear-gradient(45deg,rgba(234, 101, 10, 1), rgba(100, 239, 106, 1));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	transform-style: preserve-3d;
+	transition: 1s;
+	perspective: 800px;
+}
+#window #logo:hover{
+	transform:rotateX(360deg) scale(1.2);
+}
+#window #today{
+	width: 100%;
+}
+#windwo #minutely{
+	width: 100%;
+	
+}
+#pc footer{
+	width: 100vw;
+	opacity: 0.5;
+	background: black;
+	position: absolute;
+	bottom: 0;
+}
+#pc footer #beian{
+	height: 2rem;
+	font: 1.2rem/2rem arial;
+	text-align: center;
+}
+#pc footer #beian a{
+	text-decoration: none;
+	color: white;
+}
+#pc footer #beian a:hover{
+	color: deepskyblue;
+}
