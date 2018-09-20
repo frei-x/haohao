@@ -398,7 +398,7 @@
 		</script>
 		<!--跨域加载百度地图 获取用户地理信息-->
 
-		<script src="http://api.map.baidu.com/location/ip?ak=G9LW5XXPP9mBVZwlga5iqVpvxDP8WMTL&coor=gcj02&callback=fun_user">
+		<script src="https://api.map.baidu.com/location/ip?ak=G9LW5XXPP9mBVZwlga5iqVpvxDP8WMTL&coor=gcj02&callback=fun_user">
 			//用户信息 jsonp跨域数据作为参数,如果定位成功则使用定位的经纬度:
 			//h5地理定位里的好像是异步,总是后面的彩云数据加载了,百度ip定位才加载,如果我把彩云数据改到地理定位里,前面写好的函数又要重写,变成局部函数
 			//这里要写三种,地理定位否则if定位  用户修改位置,并且还要更新视图 又要根据经纬度查出城市  ,各种函数嵌套函数 改动太大,写了一半没写了;
@@ -437,7 +437,7 @@
 
 					//加载实时数据
 					let script_weather = document.createElement("script");
-					let url = `http://api.caiyunapp.com/v2/K=AYABoLvCXbQ2CU/${data_root.point_x},${data_root.point_y}/realtime.jsonp?callback=load_data.fun_jsonp`;
+					let url = `https://api.caiyunapp.com/v2/K=AYABoLvCXbQ2CU/${data_root.point_x},${data_root.point_y}/realtime.jsonp?callback=load_data.fun_jsonp`;
 					script_weather.setAttribute("src", url);
 					get_el('head')[0].appendChild(script_weather);
 				}
